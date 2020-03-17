@@ -5,8 +5,7 @@ from uuid import uuid1
 # Create your models here.
 
 
-class Individus(models.Model):
-    guid = uuid1()
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    
+
+class Matiere(models.Model):
+    nom = models.CharField(max_length=100)
 
