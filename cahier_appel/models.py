@@ -6,7 +6,7 @@ from identite.models import Eleve, Professeur
 
 class Appel(models.Model):
     cour = models.CharField(max_length=60)
-    absent = models.ManyToManyField(Eleve)
+    absent = models.ManyToManyField(Eleve, blank=True)
     horodage = models.DateTimeField(auto_now=True)
 
     def __str__(self):

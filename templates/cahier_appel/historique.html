@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="2px" cellpadding="6px">
+        <thead>
+            <td>Jour</td>
+            <td>Cour</td>
+            <td>absent</td>
+        </thead>
+        {% for obj in object_list %}
+            <tr>
+                <td>{{ obj.horodage }}</td>
+                <td>{{ obj.cour }}</td>
+                <td>
+                    {% for el in obj.absent.all %}
+                        <a href="#">{{ el }}</a>,
+                        {% empty %}
+                        <span>aucun absent</span>
+                        {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    <div>
+        <form action="{% url 'appel-historique' %}">
+            <fieldset>
+                <legend>Filtre</legend>
+                <label for="_matiere">Matiere</label>
+                <input id="_matiere" type="text" value="{% if p.matiere %} {{ p.matiere }} {% endif %}" name="matiere" placeholder="matiere">
+                <br>
+                <br>
+                <label for="_date">Horodage</label>
+                <input id="_date" type="datetime-local" value="{% if p.horo %} {{ p.horo }} {% endif %}" name="horodage">
+                <br> <br>
+                <input type="submit" value="filtrer">
+                &nbsp;
+                <input type="reset" value="reinitialiser">
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

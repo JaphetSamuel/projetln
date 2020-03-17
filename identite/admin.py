@@ -18,3 +18,7 @@ class EtablissementAdmin(admin.ModelAdmin):
 @admin.register(Administration)
 class AdministrationAdmin(admin.ModelAdmin):
     pass
+
+@admin.register(Classe)
+class ClasseAdmin(admin.ModelAdmin):
+    pass

@@ -4,12 +4,19 @@ from uuid import uuid4
 
 # Create your models here.
 
+class Classe(models.Model):
+    niveau = models.CharField(max_length=20)
+    distinct = models.CharField(max_length=20, blank=True)
+    serie = models.CharField(max_length=3, blank=True)
+
+    def __str__(self):
+        return self.niveau,' ',self.serie, self.distinct
 
 class Eleve (models.Model):
     guid = uuid4()
     matricule = models.CharField(max_length=30)
     etablissement = models.ForeignKey('Etablissement', on_delete=models.CASCADE, blank=False, default=1)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, limit_choices_to={'is_superuser':False})
     age = models.IntegerField(default=10)
     numero = models.CharField(max_length=12)
     niveau = models.CharField(max_length=30, blank=False, default="sixieme")
