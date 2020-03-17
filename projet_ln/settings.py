@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'scolaire.apps.ScolaireConfig',
     'identite',
+    'cahier_appel',
 ]
 
 MIDDLEWARE = [
