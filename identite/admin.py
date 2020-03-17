@@ -5,8 +5,8 @@ from .models import *
 
 @admin.register(Eleve)
 class EleveAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['__str__', 'guid']
 
 @admin.register(Professeur)
 class ProfesseurAdmin(admin.ModelAdmin):
-    list_display = ['__str__', 'matiere']
+    list_display = ['__str__', 'matiere', 'guid']
